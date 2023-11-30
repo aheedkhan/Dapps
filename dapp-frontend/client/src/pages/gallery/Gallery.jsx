@@ -92,8 +92,6 @@ export default function Gallery() {
     },
   ];
 
-  const [isOpen, setIsOpen] = useState(null);
-
   return (
     <>
       <section>
