@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Select } from "flowbite-react";
+
 import { useState } from "react";
 export default function Gallery() {
   const category = [
