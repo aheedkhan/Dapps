@@ -66,7 +66,7 @@ export default () => {
             <a className="hover:cursor-pointer" href={items.href}>
               <img
                 src={items.img}
-                className="group-hover:scale-105 group-hover:brightness-75 duration-500 h-custom w-custom object-cover object-center "
+                className="group-hover:scale-105 group-hover:brightness-75 duration-500 h-custom w-full object-cover object-center "
                 loading="lazy"
                 alt={items.Name}
               />

@@ -9,6 +9,7 @@ export default function MyNFTs() {
       Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      islisted: true,
     },
     {
       img: "https://preview.colorlib.com/theme/photosen/images/nature_small_8.jpg.webp",
@@ -17,6 +18,7 @@ export default function MyNFTs() {
       Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      islisted: false,
     },
     {
       img: "https://preview.colorlib.com/theme/photosen/images/nature_small_7.jpg.webp",
@@ -24,6 +26,7 @@ export default function MyNFTs() {
       Name: "Lorem Ipsum is simply dummy text of the printing",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      islisted: true,
     },
     {
       img: "https://preview.colorlib.com/theme/photosen/images/nature_small_6.jpg.webp",
@@ -32,6 +35,7 @@ export default function MyNFTs() {
       Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      islisted: true,
     },
     {
       img: "https://preview.colorlib.com/theme/photosen/images/nature_small_5.jpg.webp",
@@ -40,6 +44,7 @@ export default function MyNFTs() {
       Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      islisted: false,
     },
     {
       img: "https://preview.colorlib.com/theme/photosen/images/nature_small_4.jpg.webp",
@@ -48,6 +53,7 @@ export default function MyNFTs() {
       Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      islisted: true,
     },
     {
       img: "https://preview.colorlib.com/theme/photosen/images/nature_small_1.jpg.webp",
@@ -56,6 +62,7 @@ export default function MyNFTs() {
       Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      islisted: true,
     },
     {
       img: "https://preview.colorlib.com/theme/photosen/images/nature_small_3.jpg.webp",
@@ -64,6 +71,7 @@ export default function MyNFTs() {
       Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      islisted: true,
     },
   ];
 
@@ -74,13 +82,23 @@ export default function MyNFTs() {
       </h1>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-10">
         {category.map((items, key) => (
-          <a className="card1 group">
-            <img
-              className=" group-hover:brightness-50 p-2 card-img hover:scale-105 hover:duration-300 "
-              src={items.img}
-            />
-            <div className="card-info">
-              <span className="text-white">Price ⟠{items.price}Eth</span>
+          <a className="">
+            <img className="" src={items.img} />
+            <div className="">
+              <div className="text-white bg-red-700 rounded-lg p-1">
+                Price ⟠{items.price}Eth
+              </div>
+              {items.islisted ? (
+                <>
+                  {" "}
+                  <div className="p-2 bg-gray-600 font-semibold rounded-lg text">
+                    already Listed
+                  </div>{" "}
+                  <button className="card-button">Unlist</button>
+                </>
+              ) : (
+                <button className="card-button">Sell</button>
+              )}
             </div>
           </a>
         ))}

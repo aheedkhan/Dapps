@@ -1,5 +1,5 @@
 import React from "react";
-
+import Cart from "/src/assets/favicon_io (6)/favicon.ico";
 import { useState } from "react";
 export default function Gallery() {
   const category = [
@@ -115,7 +115,13 @@ export default function Gallery() {
                 </span>
                 <p class="text-title mt-6">{items.Name}</p>
                 <p class="text-body">{items.Desc}</p>
-                <button class="card-button">Buy Now</button>
+
+                <button class="card-button">
+                  <span>
+                    <img className=" mr-1 h-6" src={Cart} />
+                  </span>
+                  Buy Now
+                </button>
               </div>
             </a>
           ))}

@@ -13,7 +13,7 @@ export default () => {
             onClick={() => {
               navigate(ROUTE.ABOUT);
             }}
-            className=" h-16 w-full "
+            className=" sm:w-60 sm:h-32 md:h-16 md:w-full lg:h-16 lg:w-full "
             src={Logo}
           />
           <div className="md:hidden">
