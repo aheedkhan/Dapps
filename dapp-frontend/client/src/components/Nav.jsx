@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "../utils/constants";
+import Logo from "/src/assets/logo.png";
 export default () => {
   const [state, setState] = useState(false);
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default () => {
               navigate(ROUTE.ABOUT);
             }}
             className=" h-16 w-full "
-            src="/src/assets/logo.png"
+            src={Logo}
           />
           <div className="md:hidden">
             <button className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border">
