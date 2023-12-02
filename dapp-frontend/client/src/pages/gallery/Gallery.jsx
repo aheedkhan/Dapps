@@ -112,7 +112,7 @@ export default function Gallery() {
                   Price ⟠{items.price}Eth
                 </span>
                 <p class="text-title mt-6">{items.Name}</p>
-                <p class="text-body">{items.Desc}</p>
+                <p class="text-body overscroll-contain ">{items.Desc}</p>
 
                 <button class="card-button">
                   <span>

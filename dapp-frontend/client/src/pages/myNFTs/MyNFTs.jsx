@@ -76,28 +76,30 @@ export default function MyNFTs() {
   ];
 
   return (
-    <section>
+    <section className="bg-white">
       <h1 className="text-white text-center text-6xl font-josefin my-10">
         My NFTs
       </h1>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-10">
         {category.map((items, key) => (
-          <a className="">
-            <img className="" src={items.img} />
-            <div className="">
-              <div className="text-white bg-red-700 rounded-lg p-1">
+          <a className="card--mynft relative">
+            <img className="image--myft z-0" src={items.img} />
+            <div className="info--mynft absolute top-0 left-0 w-full h-full flex  z-10">
+              <div className="price--mynft self-start  bg-blue-800 p-1 ">
                 Price ⟠{items.price}Eth
               </div>
               {items.islisted ? (
                 <>
                   {" "}
-                  <div className="p-2 bg-gray-600 font-semibold rounded-lg text">
+                  <button className="bg-white self-end mr-auto">
+                    Unlist
+                  </button>{" "}
+                  <div className="bg-white self-end ml-auto">
                     already Listed
-                  </div>{" "}
-                  <button className="card-button">Unlist</button>
+                  </div>
                 </>
               ) : (
-                <button className="card-button">Sell</button>
+                <button className="bg-white self-end">Sell</button>
               )}
             </div>
           </a>

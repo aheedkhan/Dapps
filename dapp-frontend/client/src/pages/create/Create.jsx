@@ -103,6 +103,8 @@ export default () => {
               <input
                 type="number"
                 placeholder="0.00"
+                step="0.01"
+                min="0.00"
                 className="w-full pl-8 pr-16 py-2 appearance-none bg-transparent outline-none border focus:border-green-700 shadow-sm rounded-lg"
               />
               <div className="absolute inset-y-0 right-3 flex items-center">
