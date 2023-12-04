@@ -13,7 +13,7 @@ export default () => {
             onClick={() => {
               navigate(ROUTE.ABOUT);
             }}
-            className=" sm:w-60 sm:h-32 md:h-16 md:w-full lg:h-16 lg:w-full "
+            className=" sm:w-1/2 sm:h-32 md:h-16 md:w-full lg:h-16 lg:w-full "
             src={Logo}
           />
           <div className="md:hidden">
@@ -60,7 +60,7 @@ export default () => {
               onClick={() => {
                 navigate(ROUTE.HOME);
               }}
-              className="text-gray-600  text-lg hover:text-green-700 hover:cursor-pointer"
+              className="text-gray-600 active:scale-90 text-lg hover:text-green-700 hover:cursor-pointer"
             >
               Home
             </li>
@@ -69,7 +69,7 @@ export default () => {
               onClick={() => {
                 navigate(ROUTE.CREATE);
               }}
-              className="text-gray-600 ml-10 text-lg hover:text-green-700 hover:cursor-pointer"
+              className="text-gray-600 ml-10 active:scale-90 text-lg hover:text-green-700 hover:cursor-pointer"
             >
               Create
             </li>
@@ -77,7 +77,7 @@ export default () => {
               onClick={() => {
                 navigate(ROUTE.MYNFTS);
               }}
-              className="text-gray-600 ml-10 text-lg hover:text-green-700 hover:cursor-pointer"
+              className="text-gray-600 ml-10 active:scale-90 text-lg hover:text-green-700 hover:cursor-pointer"
             >
               MyNfts
             </li>
@@ -86,10 +86,10 @@ export default () => {
             </li> */}
           </ul>
         </div>
-        <div className="hidden md:inline-block">
+        <div className="hidden md:inline-block active:scale-90 duration-700">
           <a
             href="javascript:void(0)"
-            className="py-3 px-4 text-white bg-green-700 hover:bg-green-800 rounded-md shadow"
+            className="py-3 px-4 text-white bg-green-700 active:bg-green-800  rounded-md shadow"
           >
             Connect Wallet
           </a>

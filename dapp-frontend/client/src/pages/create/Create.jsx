@@ -11,7 +11,7 @@ export default () => {
 
   return (
     <section className="grid grid-cols-2 gap-4 px-12 mb-20 mt-10 font-josefin">
-      <div className="max-w-md  h-96 rounded-lg border-2 border-dashed flex items-center justify-center mt-8 my-4 hover:border-[#20c997]">
+      <div className="max-w-md  h-96 rounded-lg border-2 border-dashed flex items-center justify-center mt-8 my-4 hover:border-[#20c997] hover:scale-105 duration-300 ">
         <label
           htmlFor="file"
           className="cursor-pointer text-center p-4 md:p-8 "
@@ -47,12 +47,12 @@ export default () => {
               <input
                 type="text"
                 placeholder="Title of your NFT"
-                className=" caret-green-700 w-full pl-4 pr-16 py-2 appearance-none bg-transparent border-white outline-none border focus:border-green-700 shadow-sm rounded-lg hover:border-green-700"
+                className="hover:scale-105 duration-300  caret-green-700 w-full pl-4 pr-16 py-2 appearance-none bg-transparent border-white outline-none border focus:border-green-700 shadow-sm rounded-lg hover:border-green-700"
               />
             </div>
           </div>
           {/*option */}
-          <div className="relative w-60 bottom-15 max-w-full mx-auto mt-12 ">
+          <div className="relative w-60 bottom-15 max-w-full mx-auto mt-12 hover:scale-105 duration-300 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="absolute top-0 bottom-0 w-5 h-5 my-auto text-green-700 right-3"
@@ -88,7 +88,7 @@ export default () => {
           <textarea
             required
             placeholder="Tell everyone about your nft and how cool it is!!!"
-            className="w-full caret-green-700 text-white mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-green-700 shadow-sm rounded-lg"
+            className="hover:scale-105 duration-300  w-full caret-green-700 text-white mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-green-700 shadow-sm rounded-lg"
           ></textarea>
         </div>
 
@@ -96,7 +96,7 @@ export default () => {
           {/* amount */}
           <div className="w-30 mt-999">
             <label className="text-white font-medium">Amount</label>
-            <div className="relative mt-2 max-w-xs text-green-700 ">
+            <div className="relative mt-2 max-w-xs text-green-700 hover:scale-105 duration-300 ">
               <span className="h-6 text-gray-400 absolute left-3 inset-y-0 my-auto">
                 ⟠
               </span>
@@ -112,7 +112,7 @@ export default () => {
               </div>
             </div>
           </div>
-          <button class="w-40 h-12 mt-8 lg:ml-20 bg-transparent cursor-pointer border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff] group hover:bg-green-700 transition duration-300 ease-in-out">
+          <button class="hover:scale-105 duration-300  w-40 h-12 mt-8 lg:ml-20 bg-transparent cursor-pointer border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff] group hover:bg-green-700 transition ease-in-out">
             <span class="font-medium text-[#fff] group-hover:text-white">
               Create
             </span>

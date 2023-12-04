@@ -28,22 +28,11 @@ export default {
         15: "15px",
         20: "7rem",
         999: "0.5rem",
+        275: "275px",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
         josefin: ["Josefin Sans", "sans-serif"],
-      },
-      keyframes: {
-        colorchange: {
-          "0%": { color: "#FFFFFF" }, // White
-          "25%": { color: "#53d8b6" }, // Lighter Teal
-          "50%": { color: "#20c997" }, // Teal
-          "75%": { color: "#53d8b6" }, // Lighter Teal
-          "100%": { color: "FFFFFF" }, // White
-        },
-      },
-      animation: {
-        colorchange: "colorchange 5s infinite",
       },
     },
   },

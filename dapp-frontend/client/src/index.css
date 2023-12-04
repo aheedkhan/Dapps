@@ -34,13 +34,14 @@
   position: relative;
   z-index: 3;
   color: #f5f5f5;
-  opacity: 0;
+  opacity: 1;
   transform: translateY(5%);
   transition: 0.5s;
 }
 
 /*Text*/
 .text-title {
+  position: absolute;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -49,15 +50,15 @@
   letter-spacing: 1px;
   font-size: 0.9rem;
   margin: 5px 0 15px 0;
+  position: absolute;
 }
 
 /*Button*/
 .card-button {
-  padding: 0.6rem;
   outline: none;
   border: none;
   display: flex;
-  border-radius: 4px;
+  position: absolute;
   background: #20c997;
   color: white;
   font-weight: bold;
@@ -74,7 +75,7 @@
 }
 
 /*Hover*/
-.card:hover {
+/* .card:hover {
   transform: translateY(3%);
   padding: 2rem 2rem;
 }
@@ -88,13 +89,11 @@
   transform: translateY(0);
 }
 
-.card-button:hover {
-  background: #074532;
+.card-button:active {
+  background: #086549;
   color: #f5f5f5;
-}
+  transform: scale(0.97);
+  animation-delay: 300;
+} */
 
 /* ////card my nft///// */
-
-.card--mynft {
-  /* display: flex; */
-}

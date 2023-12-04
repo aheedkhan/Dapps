@@ -95,27 +95,30 @@ export default function Gallery() {
   return (
     <>
       <section>
-        <h1 className="text-white text-center text-6xl font-josefin my-16 hover:animate-colorchange select-none">
+        <h1 className="text-white text-center text-6xl font-josefin my-16 select-none">
           Portrait gallery
         </h1>
 
         <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10">
           {category.map((items, key) => (
-            <a className="card group hover:cursor-pointer ">
+            <a className="card group">
               {" "}
               <img
                 className="group-hover:brightness-50 p-2 card-img "
                 src={items.img}
               />
-              <div class="card-info">
-                <span className="text-white bg-blue-800 p-1 rounded-lg card-price-gallery ">
-                  Price ⟠{items.price}Eth
-                </span>
-                <p class="text-title mt-6">{items.Name}</p>
-                <p class="text-body overscroll-contain ">{items.Desc}</p>
+              <div class="card-info flex flex-col h-full w-full ">
+                <div className="text-white font-medium bg-blue-800 p-1 rounded-lg card-price-gallery select-none absolute place-self-start">
+                  Price: ⟠{items.price}Eth
+                </div>
 
-                <button class="card-button">
-                  <span>
+                <p class="text-title mt-9 select-none">{items.Name}</p>
+                <p class="text-body overscroll-contain select-none">
+                  {items.Desc}
+                </p>
+
+                <button class="card-button select-none self-start mt-auto p-2 rounded-md">
+                  <span className="select-none">
                     <img className=" mr-1 h-6" src={Cart} />
                   </span>
                   Buy Now
