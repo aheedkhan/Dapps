@@ -29,6 +29,8 @@ export default {
         20: "7rem",
         999: "0.5rem",
         275: "275px",
+        270: "267px",
+        260: "259px",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

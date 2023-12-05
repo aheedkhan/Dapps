@@ -98,7 +98,7 @@ export default function MyNFTs() {
                   <div className=" text-white rounded-md bg-gray-500 self-end absolute mt-2 mr-2 px-1 duration-500 group-hover:m-4 ">
                     Already Listed
                   </div>
-                  <button className=" invisible group-hover:visible flex py-1 active:bg-gray-700 bg-gray-100  active:text-white self-start mt-auto mr-auto z-20 px-4 rounded-lg  group-hover:mb-2 group-hover:ml-1 active:scale-90 active:duration-1000 ">
+                  <button className=" invisible group-hover:visible flex py-1 active:bg-gray-700 bg-gray-100  active:text-white self-start mt-auto mr-auto z-20 px-4 rounded-lg  group-hover:mb-2 group-hover:ml-1 active:scale-90 duration-500 ">
                     <span className="select-none">
                       <img className="mr-1 h-5" src={Unlist_emoji} />
                     </span>

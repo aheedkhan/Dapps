@@ -25,6 +25,7 @@ export default function Gallery() {
       Name: "Lorem Ipsum is simply dummy text of the printing",
       Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       seller: "i am seller :)",
+      price: 23,
     },
     {
       img: "https://preview.colorlib.com/theme/photosen/images/nature_small_6.jpg.webp",
@@ -99,25 +100,28 @@ export default function Gallery() {
           Portrait gallery
         </h1>
 
-        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10">
+        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 mx-4 ">
           {category.map((items, key) => (
-            <a className="card group">
+            <a className="flex flex-col group relative m-2">
               {" "}
               <img
-                className="group-hover:brightness-50 p-2 card-img "
+                className="group-hover:scale-95 group-hover:brightness-50 duration-700 rounded-md z-0"
                 src={items.img}
               />
-              <div class="card-info flex flex-col h-full w-full ">
-                <div className="text-white font-medium bg-blue-800 p-1 rounded-lg card-price-gallery select-none absolute place-self-start">
+              <div className="z-10 absolute flex">
+                <div className="font-josefin text-white font-medium bg-blue-800 p-1 rounded-lg card-price-gallery select-none absolute place-self-start group-hover:m-3 duration-700 -mt-1 -ml-1">
                   Price: ⟠{items.price}Eth
                 </div>
+                <div className="mt-10 p-2  duration-700">
+                  <p className="text-white text-2xl font-josefin p-2">
+                    {items.Name}
+                  </p>
+                  <p className="text-white text-sm font-josefin mt-3 ">
+                    {items.Desc}
+                  </p>
+                </div>
 
-                <p class="text-title mt-9 select-none">{items.Name}</p>
-                <p class="text-body overscroll-contain select-none">
-                  {items.Desc}
-                </p>
-
-                <button class="card-button select-none self-start mt-auto p-2 rounded-md">
+                <button class="active:bg-gray-700 active:text-white flex ml-260 font-josefin select-none p-2 rounded-md bg-gray-100 duration-700 group-hover:mb-2 group-hover:mt-270 active:scale-90 active:duration-700  absolute mt-275 group-hover:-ml-1: ">
                   <span className="select-none">
                     <img className=" mr-1 h-6" src={Cart} />
                   </span>
