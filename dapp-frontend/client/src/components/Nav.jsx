@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "../utils/constants";
-import Logo from "/src/assets/logo.png";
+import Logo from "/src/assets/logos/crypto_clicks_logo.png";
 export default () => {
   const [state, setState] = useState(false);
   const navigate = useNavigate();

@@ -77,7 +77,7 @@ export default () => {
                 onClick={() => {
                   navigate(ROUTE.GALLERY);
                 }}
-                class="font-josefin w-40 h-10 mt-5 bg-transparent cursor-pointer  border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff]  hover:bg-[#fff] transition duration-300 ease-in-out absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group/button active:scale-95 duration-500"
+                class="font-josefin w-40 h-10 mt-5 bg-transparent cursor-pointer  border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff]  hover:bg-[#fff] transition  ease-in-out absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group/button active:scale-95 duration-500"
               >
                 <span class="font-medium text-[#fff] group-hover/button:text-black">
                   More NFTs
