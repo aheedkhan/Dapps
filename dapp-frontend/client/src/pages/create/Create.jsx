@@ -118,7 +118,7 @@ export default () => {
                   </div>
                 </div>
               </div>
-              <button class="hover:scale-105 duration-300  w-40 h-12 mt-8 lg:ml-20 bg-transparent cursor-pointer border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff] group hover:bg-green-700 transition ease-in-out">
+              <button class="hover:scale-105 duration-300  w-40 h-12 mt-8 lg:ml-20 bg-transparent cursor-pointer border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff] group hover:bg-green-700 transition ease-in-out active:scale-95">
                 <span class="font-medium text-[#fff] group-hover:text-white">
                   Create
                 </span>
