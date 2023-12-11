@@ -109,7 +109,7 @@ export default function About() {
             <h3 className="text-white text-3xl font-semibold sm:text-4xl">
               Meet our team
             </h3>
-            <p className="text-white-600 mt-3">
+            <p className="text-white mt-3">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.Lorem Ipsum has been the industry's standard dummy.
             </p>
