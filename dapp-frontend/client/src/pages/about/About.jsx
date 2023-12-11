@@ -102,7 +102,6 @@ export default function About() {
           </li>
         </ul>
       </section>
-      <hr />
 
       <section className="py-14">
         <div className="max-w-screen-xl mx-auto px-4 text-center md:px-8">
