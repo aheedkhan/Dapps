@@ -5,8 +5,7 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    seller: "i am seller :)",
-    islisted: true,
+    islisted: false,
   },
   {
     img: "https://preview.colorlib.com/theme/photosen/images/nature_small_8.jpg.webp",
@@ -14,7 +13,6 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    seller: "i am seller :)",
     islisted: false,
   },
   {
@@ -23,7 +21,6 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    seller: "i am seller :)",
     islisted: true,
   },
   {
@@ -31,8 +28,8 @@ export const myNFTsData = [
     categ: "Travel",
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    seller: "i am seller :)",
     islisted: true,
   },
   {
@@ -41,7 +38,6 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    seller: "i am seller :)",
     islisted: false,
   },
   {
@@ -50,7 +46,6 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    seller: "i am seller :)",
     islisted: true,
   },
   {
@@ -59,7 +54,6 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    seller: "i am seller :)",
     islisted: true,
   },
   {
@@ -68,7 +62,6 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    seller: "i am seller :)",
-    islisted: true,
+    islisted: false,
   },
 ];
