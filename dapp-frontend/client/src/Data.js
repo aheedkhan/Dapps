@@ -5,7 +5,8 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    islisted: false,
+    islisted: true,
+    key: 1,
   },
   {
     img: "https://preview.colorlib.com/theme/photosen/images/nature_small_8.jpg.webp",
@@ -21,7 +22,7 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    islisted: true,
+    islisted: false,
   },
   {
     img: "https://preview.colorlib.com/theme/photosen/images/nature_small_6.jpg.webp",
@@ -30,7 +31,7 @@ export const myNFTsData = [
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
 
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    islisted: true,
+    islisted: false,
   },
   {
     img: "https://preview.colorlib.com/theme/photosen/images/nature_small_5.jpg.webp",
@@ -46,7 +47,7 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    islisted: true,
+    islisted: false,
   },
   {
     img: "https://preview.colorlib.com/theme/photosen/images/nature_small_1.jpg.webp",
@@ -54,12 +55,20 @@ export const myNFTsData = [
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    islisted: true,
+    islisted: false,
   },
   {
     img: "https://preview.colorlib.com/theme/photosen/images/nature_small_3.jpg.webp",
     categ: "Portrait",
     price: 23,
+    Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    islisted: false,
+  },
+  {
+    img: "https://preview.colorlib.com/theme/photosen/images/nature_small_3.jpg.webp",
+    categ: "Portrait",
+    price: 33,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     islisted: false,

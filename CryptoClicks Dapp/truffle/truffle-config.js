@@ -68,7 +68,7 @@ module.exports = {
     development: {
       host: "127.0.0.1",
       port: 8545,
-      network_id: "1700946550742", // Match your Ganache network id
+      network_id: "1702584149451", // Match your Ganache network id
     },
     //
     // An additional network, but with some advanced options…
