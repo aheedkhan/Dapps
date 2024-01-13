@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
@@ -51,4 +52,16 @@ function signinWithGoogle() {
     });
 }
 
-export { app, auth, db, storage, signinWithGoogle };
+function signOutt() {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      console.log("Sign-out successful.");
+    })
+    .catch((error) => {
+      // An error happened.
+      console.log(error.message);
+    });
+}
+
+export { app, auth, db, storage, signinWithGoogle, signOutt };

@@ -7,11 +7,13 @@ export default {
         custom: "375.552px",
         gallery: "679.719px",
         about: "600px",
+        loginn: "340px",
       },
       height: {
         custom: "375.552px",
         gallery: "153.583px",
         about: "600px",
+        loginn: "340px",
       },
       textColor: ["responsive", "hover", "focus", "group-hover"],
       colors: {

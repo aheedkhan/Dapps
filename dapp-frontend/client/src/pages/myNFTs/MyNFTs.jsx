@@ -1,8 +1,19 @@
 import React from "react";
 import Card from "/src/components/Card_MYNFTs";
 import { myNFTsData } from "/src/Data";
-import Image from "/src/assets/images/sunflower.jpg";
-import { app, auth, db, storage, signinWithGoogle } from "/src/utils/firebase";
+import loginImage from "/src/assets/icons/signOutt.png";
+import signoutLogo from "/src/assets/icons/signOut.png";
+import googleLogo from "/src/assets/icons/google_536453.png";
+import sunflowerImage from "/src/assets/images/sunflower.jpg";
+import butterflyImage from "/src/assets/images/butterfly.jpg";
+import {
+  app,
+  auth,
+  db,
+  storage,
+  signinWithGoogle,
+  signOutt,
+} from "/src/utils/firebase";
 import { useSelector } from "react-redux";
 
 export default function MyNFTs() {
@@ -13,34 +24,73 @@ export default function MyNFTs() {
       {isLogout ? (
         <div
           id="loggedOutView"
-          class=" flex items-center justify-center h-screen w-screen bg-white font-josefin  "
+          class=" flex items-center select-none justify-center h-screen w-screen  font-josefin  "
         >
-          <div className="flex flex-row">
-            <img src={Image} className="h-40 w-40" />
+          <div className="group grid grid-rows-3 grid-flow-col gap-4">
+            <div className="row-span-3">
+              <img
+                className="group-hover:translate-x-1 h-loginn w-72 duration-700 rounded-md grayscale group-hover:grayscale-0 "
+                src={sunflowerImage}
+              />
+            </div>
 
-            <button
-              onClick={() => signinWithGoogle()}
-              className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
-            >
-              <svg
-                className="w-5 h-5"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <div className="row-span-2 col-span-2">
+              <img
+                className="group-hover:-translate-x-1 h-260 w-80 duration-700 rounded-md grayscale  group-hover:grayscale-0"
+                src={butterflyImage}
+              />
+            </div>
+            <div className="group-hover:-translate-x-1 col-span-2">
+              <button
+                onClick={() => signinWithGoogle()}
+                className="group w-full inline-flex items-center justify-center  px-3 py-2 bg-white rounded-lg hover:bg-gray-50 duration-500 active:scale-90 active:text-white active:bg-gray-500 select-none"
               >
-                ...
-              </svg>
-              Continue with Google
-            </button>
+                <span className=" inline-flex self-center visible group-hover:invisible absolute duration-700 transition-transform group-hover:translate-y-11">
+                  <span>
+                    <img
+                      className="h-8 duration-700 transition-transform group-hover:-translate-x-11"
+                      src={loginImage}
+                    />
+                  </span>
+                  <span className=" self-center mt-2 ml-3">
+                    {" "}
+                    Click for SignIn/SignUp
+                  </span>
+                </span>
+
+                <span>
+                  <img
+                    className="mx-5 h-12 group-hover:translate-x-3 invisible group-hover:visible transition-transform duration-1000"
+                    src={googleLogo}
+                  />
+                </span>
+                <span className=" select-none mb-6 mx-5 group-hover:-translate-x-4 group-hover:translate-y-3 duration-1000 invisible group-hover:visible transition-transform">
+                  Continue with Google
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       ) : (
         <section id="loggedInView " className="font-josefin ">
-          <div className="w-full flex justify-between p-3 ">
-            <button className="text-white"> SignOut </button>
+          <div className="w-full flex justify-between p-3  ">
+            <button
+              onClick={() => signOutt()}
+              className="group ml-2 inline-flex border  px-3 py-2 h-8 mt-4 rounded-lg bg-white border-black text-black active:scale-90 hover:scale-105 duration-700"
+            >
+              {" "}
+              SignOut
+              <span>
+                {" "}
+                <img
+                  src={signoutLogo}
+                  className=" h-6 ml-2 group-hover:translate-x-2 duration-500  "
+                />
+              </span>
+            </button>
             <div className="p-2 hover:bg-white  flex rounded-lg hover:scale-105 duration-700 group ">
               {" "}
-              <p className="group-hover:text-black duration-700 text-white select-none text-lg self-center">
+              <p className="group-hover:text-black duration-700 text-white select-none text-lg self-center ">
                 {user ? user.name : "Loading..."}
               </p>{" "}
               <img
