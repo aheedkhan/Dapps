@@ -8,23 +8,69 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ROUTE } from "./utils/constants";
 import MyNFTs from "./pages/myNFTs/MyNFTs";
 import About from "./pages/about/About";
+import NotFound from "./pages/not_found/NotFound";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+
+function Layout({ children }) {
+  return (
+    <>
+      <Nav />
+      {children}
+      <Footer />
+    </>
+  );
+}
+
 export default function App() {
   return (
     <>
       {" "}
       <Provider store={store}>
         <BrowserRouter>
-          <Nav />
           <Routes>
-            <Route path={ROUTE.HOME} element={<Home />} />
-            <Route path={ROUTE.CREATE} element={<Create />} />
-            <Route path={ROUTE.GALLERY} element={<Gallery />} />
-            <Route path={ROUTE.MYNFTS} element={<MyNFTs />} />
-            <Route path={ROUTE.ABOUT} element={<About />} />
+            <Route
+              path={ROUTE.HOME}
+              element={
+                <Layout>
+                  <Home />
+                </Layout>
+              }
+            />
+            <Route
+              path={ROUTE.CREATE}
+              element={
+                <Layout>
+                  <Create />
+                </Layout>
+              }
+            />
+            <Route
+              path={ROUTE.GALLERY}
+              element={
+                <Layout>
+                  <Gallery />
+                </Layout>
+              }
+            />
+            <Route
+              path={ROUTE.MYNFTS}
+              element={
+                <Layout>
+                  <MyNFTs />
+                </Layout>
+              }
+            />
+            <Route
+              path={ROUTE.ABOUT}
+              element={
+                <Layout>
+                  <About />
+                </Layout>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-          <Footer />
         </BrowserRouter>
       </Provider>
       ,
