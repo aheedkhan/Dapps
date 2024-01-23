@@ -4,7 +4,7 @@ export const myNFTsData = [
     categ: "Nature",
     price: 23,
     Name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    Desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dumm",
     islisted: true,
     key: 1,
   },

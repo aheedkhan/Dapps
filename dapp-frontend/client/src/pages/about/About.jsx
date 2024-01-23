@@ -114,7 +114,7 @@ export default function About() {
               industry.Lorem Ipsum has been the industry's standard dummy.
             </p>
           </div>
-          <div className="mt-12 ">
+          {/* <div className="mt-12 ">
             <ul className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
               {team.map((item, idx) => (
                 <li key={idx} className="hover:scale-105 duration-700">
@@ -175,7 +175,7 @@ export default function About() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
-    "firebase": "^10.7.1",
+    "@thirdweb-dev/react": "^4.3.2",
+    "@thirdweb-dev/sdk": "^4.0.27",
+    "firebase": "^10.7.2",
+    "ipfs-http-client": "^60.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
