@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Modal from "react-modal";
+// set the root element of your app
+Modal.setAppElement("#root");
+import "/src/init";
+import axios from "axios";
 
 export default function Create() {
   const [file, setFile] = useState(null);
@@ -7,26 +12,117 @@ export default function Create() {
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [imageURL, setImageURL] = useState("");
+  const [imageHash, setImageHash] = useState(null);
+  const [metadataHash, setMetadataHash] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false); // state for modal
+
+  const sendFileToIPFS = async (e) => {
+    if (file) {
+      try {
+        // create a new form data object
+        const formData = new FormData();
+        // append the file to the form data
+        formData.append("file", file);
+
+        // upload the file to IPFS using the Pinata SDK
+        const resFile = await axios({
+          method: "post",
+          url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+          data: formData,
+          headers: {
+            pinata_api_key: `${import.meta.env.VITE_APP_PINATA_API_KEY}`,
+            pinata_secret_api_key: `${
+              import.meta.env.VITE_APP_PINATA_API_SECRET
+            }`,
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        // get the IPFS hash of the file from the response
+        const ipfsHash = resFile.data.IpfsHash;
+
+        // set the image hash state
+        setImageHash(ipfsHash);
+        console.log(imageHash);
+
+        // create a metadata object with the required fields
+        const metadata = {
+          name: title,
+          description: description,
+          amount: amount,
+          category: category,
+          imageURI: `https://salmon-main-antlion-827.mypinata.cloud/ipfs/${ipfsHash}`,
+        };
+
+        // upload the metadata as a JSON file to IPFS using the Pinata SDK
+        const resMeta = await axios({
+          method: "post",
+          url: "https://api.pinata.cloud/pinning/pinJSONToIPFS",
+          data: metadata,
+          headers: {
+            pinata_api_key: `${import.meta.env.VITE_APP_PINATA_API_KEY}`,
+            pinata_secret_api_key: `${
+              import.meta.env.VITE_APP_PINATA_API_SECRET
+            }`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        // get the IPFS hash of the metadata from the response
+        const metadataHash = resMeta.data.IpfsHash;
+
+        // set the metadata hash state
+        setMetadataHash(metadataHash);
+        console.log(metadataHash);
+
+        //Take a look at your Pinata Pinned section, you will see a new file and a new JSON added to your list.
+      } catch (error) {
+        console.log("Error sending File and Metadata to IPFS: ");
+        console.log(error);
+      }
+    }
+  };
   const showImage = (e) => {
     setFile(e.target.files[0]);
     if (e.target.files.length != 0) {
       setImageURL(URL.createObjectURL(e.target.files[0]));
     }
   };
+  // call the upload function and wait for it to finish
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Data Submitted");
-    if (!file) {
-      alert("Add Image!");
+
+    if (!file || description.length <= 120) {
+      setModalIsOpen(true);
       return;
     }
+    alert("Please wait while we are uploading your data!");
+    await sendFileToIPFS()
+      .then(() => {
+        // reset the file state and the other states
+        setFile(null);
+        setTitle("");
+        setAmount("");
+        setCategory("");
+        setDescription("");
+        console.log("Data Submitted");
+      })
+      .catch((error) => {
+        // handle any errors
+        console.error(error);
+      });
+  }
 
-    setFile(null);
-    setTitle("");
-    setAmount("");
-    setCategory("");
-    setDescription("");
+  useEffect(() => {
+    console.log(
+      `Successful upload! your image hash for NFT is ${imageHash} and metadata hash for NFT is ${metadataHash} `
+    );
+  }, [file]);
+
+  function closeModal() {
+    // close the modal
+    setModalIsOpen(false);
   }
   return (
     <section className="">
@@ -60,7 +156,7 @@ export default function Create() {
                   or drag and drop your file here
                 </p>
                 <input
-                  required
+                  //required
                   id="file"
                   type="file"
                   accept="image/*"
@@ -176,6 +272,98 @@ export default function Create() {
           </div>
         </div>
       </form>
+      {/* add the modal component here */}
+      <Modal
+        // add tailwind classes here
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          },
+          content: {
+            margin: "auto",
+            width: "40%",
+            height: "30%",
+            textAlign: "center",
+            padding: 0,
+          },
+        }}
+      >
+        <div className="group bg-green-700 w-full h-full p-6 font-josefin select-none border border-spacing-7 hover:border-red-500">
+          {" "}
+          <h2 className=" flex flex-col mb-2 font-bold group-hover:text-red-500 group-hover:scale-105 duration-700">
+            Error
+          </h2>
+          <p className=" duration-700 group-hover:scale-95 ">
+            {description.length <= 100
+              ? `Add more to description current descrption isnt enough, must be atleast 2 lines`
+              : `Please Upload Image for NFT.`}
+          </p>
+          <button
+            className="border border-black px-3 py-2 hover:bg-black hover:text-white duration-500 hover:scale-105 active:scale-90 rounded-md mt-5"
+            onClick={closeModal}
+          >
+            Close
+          </button>
+        </div>
+      </Modal>
     </section>
   );
 }
+//import pinataSDK from "@pinata/sdk";
+
+// const pinata = pinataSDK(
+//   import.meta.env.VITE_APP_PINATA_API_KEY,
+//   import.meta.env.VITE_APP_PINATA_API_SECRET
+// );
+
+//   // upload the file and the metadata to IPFS using the Pinata SDK
+//   async function uploadToIPFS() {
+//     if (file) {
+//       try {
+//         // upload the file to IPFS using the Pinata SDK
+//         const response = await pinata.pinFileToIPFS(file);
+
+//         // get the IPFS hash of the file from the response
+//         const ipfsHash = response.IpfsHash;
+
+//         // set the image hash state
+//         setImageHash(ipfsHash);
+
+//         // upload the metadata as a JSON file to IPFS using the Pinata SDK
+//         const metadata = {
+//           name: title,
+//           description: description,
+//           amount: amount,
+//           category: category,
+//           imageURI: `https://salmon-main-antlion-827.mypinata.cloud/ipfs/${ipfsHash}`,
+//         };
+//         const res = await pinata.pinJSONToIPFS(metadata);
+
+//         // get the IPFS hash of the metadata from the response
+//         const metadataHash = res.IpfsHash;
+
+//         // set the metadata hash state
+//         setMetadataHash(metadataHash);
+//       } catch (error) {
+//         // handle any errors
+//         console.error(error);
+//       }
+//     }
+//   }
+
+//   // call the upload function and wait for it to finish
+//   await uploadToIPFS()
+//     .then(() => {
+//       // reset the file state and the other states
+//       setFile(null);
+//       setTitle("");
+//       setAmount("");
+//       setCategory("");
+//       setDescription("");
+//     })
+//     .catch((error) => {
+//       // handle any errors
+//       console.error(error);
+//     });

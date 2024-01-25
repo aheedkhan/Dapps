@@ -10,13 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@bundled-es-modules/axios": "^0.27.2",
+    "@pinata/sdk": "^2.1.0",
     "@reduxjs/toolkit": "^2.0.1",
-    "@thirdweb-dev/react": "^4.3.2",
-    "@thirdweb-dev/sdk": "^4.0.27",
+    "@ysfe/polyfill-webpack-plugin": "^1.0.1",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.1",
     "firebase": "^10.7.2",
+    "form-data": "^4.0.0",
+    "formidable": "^3.5.1",
+    "globalthis": "^1.0.3",
     "ipfs-http-client": "^60.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.20.0"
   },
