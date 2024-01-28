@@ -1,5 +1,8 @@
+// Dependencies for callable functions.
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+
+import { fetchFromDB } from "/src/redux/myNFTdataSlice";
 
 //import { getAnalytics } from "firebase/analytics";
 import {
@@ -9,10 +12,24 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  updateDoc,
+  doc,
+  setDoc,
+  arrayUnion,
+  onSnapshot,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { logIn, logOut } from "/src/redux/authSlice";
 import store from "/src/redux/store";
+
+// A function that toggles the isListed property of a card and updates the firestore NFTs collection.
 
 const firebaseConfig = {
   apiKey: "AIzaSyDIEuOKswlsR-1OVfPrddclrw9I7Z7GH04",
@@ -27,6 +44,7 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 const provider = new GoogleAuthProvider();
 
+//Auth firebase
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User is signed in");
@@ -35,10 +53,11 @@ onAuthStateChanged(auth, (user) => {
       name: user.displayName,
       photoURL: user.photoURL,
     };
+
     store.dispatch(logIn(userData));
   } else {
-    console.log("User is not signed in");
     store.dispatch(logOut());
+    console.log("User is not signed in");
   }
 });
 
@@ -56,6 +75,7 @@ function signOutt() {
   signOut(auth)
     .then(() => {
       // Sign-out successful.
+
       console.log("Sign-out successful.");
     })
     .catch((error) => {
@@ -63,5 +83,81 @@ function signOutt() {
       console.log(error.message);
     });
 }
+//firestore cloud database
 
-export { app, auth, db, storage, signinWithGoogle, signOutt };
+async function addMetaDataToDB(objectJson, metahash, imagehash) {
+  // Get the current user
+  const user = auth.currentUser;
+  // Get the document reference
+  const docRef = doc(db, "NFTs", user.uid);
+  objectJson.metahash = metahash;
+  objectJson.imagehash = imagehash;
+  objectJson.isListed = false;
+
+  try {
+    // Create or overwrite the document with the user's uid and the initial JSON object
+    await setDoc(
+      docRef,
+      {
+        uid: user.uid,
+      },
+      { merge: true }
+    );
+
+    // Update the document with the new JSON object
+    await updateDoc(docRef, {
+      array: arrayUnion(objectJson),
+    });
+
+    console.log("Document updated successfully");
+  } catch (e) {
+    console.error("Error updating document: ", e);
+  }
+}
+// Define the fetchFromDB function
+//dispatch
+function fetchDB() {
+  // Use the optional chaining operator to access the user uid
+  const user = auth.currentUser;
+  const userUID = user?.uid;
+  // Check if the user uid exists
+  if (userUID) {
+    // Declare an empty array to store the data
+    let data = [];
+    // Listen to the query snapshot
+    onSnapshot(
+      query(collection(db, "NFTs"), where("uid", "==", userUID)),
+      (querySnapshot) => {
+        // Loop through the documents in the snapshot
+
+        querySnapshot.docs.forEach((doc) => {
+          // Push the document data to the array
+          data.push(doc.data());
+        });
+
+        //console.log(data);
+        // Dispatch the fetchFromDB action with the data array as the payload
+        // dispatch(fetchFromDB(data));
+        return data;
+      }
+    );
+  } else {
+    // Handle the case when the user uid is null
+    console.log("No data");
+  }
+}
+////// A function that toggles the isListed property of a card and updates the firestore NFTs collection
+// function toggle(data) {
+//   data = data.id;
+
+// }
+export {
+  app,
+  auth,
+  db,
+  storage,
+  signinWithGoogle,
+  signOutt,
+  addMetaDataToDB,
+  fetchDB,
+};

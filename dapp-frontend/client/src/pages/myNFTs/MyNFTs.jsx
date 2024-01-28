@@ -1,24 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchDB } from "/src/utils/firebase";
+
 import Card from "/src/components/Card_MYNFTs";
-import { myNFTsData } from "/src/Data";
+import { signinWithGoogle, signOutt } from "/src/utils/firebase";
 import loginImage from "/src/assets/icons/signOutt.png";
 import signoutLogo from "/src/assets/icons/signOut.png";
 import googleLogo from "/src/assets/icons/google_536453.png";
 import sunflowerImage from "/src/assets/images/sunflower.jpg";
 import butterflyImage from "/src/assets/images/butterfly.jpg";
-import {
-  app,
-  auth,
-  db,
-  storage,
-  signinWithGoogle,
-  signOutt,
-} from "/src/utils/firebase";
-import { useSelector } from "react-redux";
+import { fetchNFTsDB } from "../../redux/actions/myNFTdataAction";
 
 export default function MyNFTs() {
   const isLogout = useSelector((state) => state.auth.isLogout);
   const user = useSelector((state) => state.auth.user);
+
+  const myNFTsData = useSelector((state) => state.myNfts);
+  const dispatch = useDispatch();
+
+  // Use a useEffect hook to call the fetchDB function when the component mounts
+  useEffect(() => {
+    dispatch(fetchNFTsDB);
+  }, []); // Use an empty array as a dependency
+
   return (
     <>
       {isLogout ? (
@@ -102,16 +107,20 @@ export default function MyNFTs() {
           <h1 className="text-white text-center text-6xl font-josefin my-10 select-none">
             My NFTs
           </h1>
+
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-10">
-            {myNFTsData.map((data, key) => {
-              return (
-                <Card
-                  image={data.img}
-                  price={data.price}
-                  listed={data.islisted}
-                />
-              );
-            })}
+            {myNFTsData.length > 0 && // Check if the array is not empty
+              myNFTsData[0].array.map((item, index) => {
+                return (
+                  <>
+                    <Card
+                      image={item.imageURI}
+                      price={item.amount}
+                      listed={item.isListed}
+                    />
+                  </>
+                );
+              })}
           </div>
         </section>
       )}

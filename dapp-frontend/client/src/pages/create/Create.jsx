@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
+
 // set the root element of your app
 Modal.setAppElement("#root");
 import "/src/init";
 import axios from "axios";
+import { addMetaDataToDB } from "../../utils/firebase";
 
 export default function Create() {
   const [file, setFile] = useState(null);
@@ -16,6 +18,36 @@ export default function Create() {
   const [metadataHash, setMetadataHash] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false); // state for modal
 
+  function retirveData(newLink) {
+    const ipfsLink = `https://salmon-main-antlion-827.mypinata.cloud/ipfs/${newLink}`;
+    fetch(ipfsLink)
+      .then((response) => {
+        // Check if the response is ok
+        if (!response.ok) {
+          // Throw an error if the response is not ok
+          throw new Error(response.statusText);
+        }
+        // Return the response as a JSON object
+        return response.json();
+      })
+      .then((data) => {
+        // Store the JSON object in a variable
+        const jsonObject = data;
+        const inde = jsonObject.imageURI.lastIndexOf("/");
+        const imagehash = jsonObject.imageURI.substring(inde + 1);
+
+        // Use the JSON object for your project
+        // For example, console.log it
+        const index = ipfsLink.lastIndexOf("/");
+        const metahash = ipfsLink.substring(index + 1);
+
+        addMetaDataToDB(jsonObject, metahash, imagehash);
+      })
+      .catch((error) => {
+        // Handle the error
+        console.error(error);
+      });
+  }
   const sendFileToIPFS = async (e) => {
     if (file) {
       try {
@@ -73,6 +105,8 @@ export default function Create() {
 
         // set the metadata hash state
         setMetadataHash(metadataHash);
+
+        retirveData(metadataHash);
         console.log(metadataHash);
 
         //Take a look at your Pinata Pinned section, you will see a new file and a new JSON added to your list.
@@ -97,7 +131,7 @@ export default function Create() {
       setModalIsOpen(true);
       return;
     }
-    alert("Please wait while we are uploading your data!");
+    alert("Please wait a while we are uploading your data!");
     await sendFileToIPFS()
       .then(() => {
         // reset the file state and the other states
@@ -106,6 +140,7 @@ export default function Create() {
         setAmount("");
         setCategory("");
         setDescription("");
+
         console.log("Data Submitted");
       })
       .catch((error) => {
@@ -124,6 +159,12 @@ export default function Create() {
     // close the modal
     setModalIsOpen(false);
   }
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Assume you have an IPFS gateway link like this
+
+  // Use fetch to get the response from the IPFS gateway link
+
   return (
     <section className="">
       <form onSubmit={handleSubmit}>
