@@ -115,8 +115,7 @@ async function addMetaDataToDB(objectJson, metahash, imagehash) {
   }
 }
 // Define the fetchFromDB function
-//dispatch
-function fetchDB() {
+function fetchDB(setData) {
   // Use the optional chaining operator to access the user uid
   const user = auth.currentUser;
   const userUID = user?.uid;
@@ -134,11 +133,8 @@ function fetchDB() {
           // Push the document data to the array
           data.push(doc.data());
         });
-
-        //console.log(data);
-        // Dispatch the fetchFromDB action with the data array as the payload
-        // dispatch(fetchFromDB(data));
-        return data;
+        //  console.log(data);
+        setData(data);
       }
     );
   } else {
@@ -148,7 +144,6 @@ function fetchDB() {
 }
 ////// A function that toggles the isListed property of a card and updates the firestore NFTs collection
 // function toggle(data) {
-//   data = data.id;
 
 // }
 export {
