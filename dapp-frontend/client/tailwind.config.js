@@ -30,9 +30,10 @@ export default {
         15: "15px",
         20: "7rem",
         999: "0.5rem",
-        275: "275px",
-        270: "267px",
+        275: "336px",
+        270: "315px",
         260: "259px",
+        250: "255px",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

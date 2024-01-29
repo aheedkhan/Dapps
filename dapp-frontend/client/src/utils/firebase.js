@@ -1,10 +1,4 @@
-// Dependencies for callable functions.
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-
-import { fetchFromDB } from "/src/redux/myNFTdataSlice";
-
-//import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -23,13 +17,13 @@ import {
   onSnapshot,
   query,
   where,
+  getDoc,
   getDocs,
+  snapshotEqual,
 } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { logIn, logOut } from "/src/redux/authSlice";
 import store from "/src/redux/store";
-
-// A function that toggles the isListed property of a card and updates the firestore NFTs collection.
 
 const firebaseConfig = {
   apiKey: "AIzaSyDIEuOKswlsR-1OVfPrddclrw9I7Z7GH04",
@@ -38,7 +32,7 @@ const firebaseConfig = {
   storageBucket: "cryptoclicks-9aa7a.appspot.com",
 };
 const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
@@ -143,9 +137,60 @@ function fetchDB(setData) {
   }
 }
 ////// A function that toggles the isListed property of a card and updates the firestore NFTs collection
-// function toggle(data) {
+// A function to flip a boolean field inside an array of a document
+async function toggle(index) {
+  // Get the user id and the index
+  const userId = auth.currentUser.uid;
+  const i = index;
 
-// }
+  // Get the document reference
+  const docRef = doc(db, `NFTs/${userId}`);
+
+  // Get the document data
+  const docData = await getDoc(docRef);
+
+  // Get the array field
+  const array = docData.data().array;
+
+  // Update the element at the index
+  array[i].isListed = !array[i].isListed;
+
+  // Update the document with the modified array
+  updateDoc(docRef, {
+    array: array,
+  });
+  console.log(array);
+}
+
+// Make the function async to use await
+async function fatchAllData(setData) {
+  // Get a reference to the collection you want to fetch
+  const colRef = collection(db, "NFTs");
+
+  // Call the getDocs function with the collection reference
+  const querySnapshot = await getDocs(colRef);
+
+  // Loop through the query snapshot array
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.data().array);
+  });
+
+  // Declare an empty array variable
+  let dataArray = [];
+
+  // Loop through the query snapshot array
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    // Concatenate the doc.data().array to the dataArray
+    dataArray = dataArray.concat(doc.data().array);
+  });
+
+  // Print the dataArray
+  console.log(dataArray);
+  setData(dataArray);
+}
+
 export {
   app,
   auth,
@@ -155,4 +200,6 @@ export {
   signOutt,
   addMetaDataToDB,
   fetchDB,
+  toggle,
+  fatchAllData,
 };

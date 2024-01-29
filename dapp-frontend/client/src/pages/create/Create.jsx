@@ -131,7 +131,7 @@ export default function Create() {
       setModalIsOpen(true);
       return;
     }
-    alert("Please wait a while we are uploading your data!");
+    alert("Click OK and Please wait until page gets refresh!");
     await sendFileToIPFS()
       .then(() => {
         // reset the file state and the other states

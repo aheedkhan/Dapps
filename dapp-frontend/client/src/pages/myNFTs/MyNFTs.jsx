@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchDB } from "/src/utils/firebase";
+import { fetchDB, toggle } from "/src/utils/firebase";
 
 import Card from "/src/components/Card_MYNFTs";
 import { signinWithGoogle, signOutt } from "/src/utils/firebase";
@@ -16,6 +16,8 @@ export default function MyNFTs() {
   const isLogout = useSelector((state) => state.auth.isLogout);
   const user = useSelector((state) => state.auth.user);
   const [data, setData] = useState([]);
+  // const [inde, setInde] = useState(true);
+  // const [check, setCheck] = useState(data[0].array[inde].isListed);
   // const myNFTsData = useSelector((state) => state.myNfts);
   // const dispatch = useDispatch();
 
@@ -24,11 +26,10 @@ export default function MyNFTs() {
     if (isLogout == false) {
       fetchDB(setData);
     }
-    console.log(data);
-  }, [isLogout]); // Use an empty array as a dependency
-
+  }, [isLogout]);
+  console.log(data);
   function toggleList(index) {
-    console.log(index);
+    toggle(index);
   }
   return (
     <>
