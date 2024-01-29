@@ -7,9 +7,9 @@ import Card from "/src/components/Card_MYNFTs";
 import { signinWithGoogle, signOutt } from "/src/utils/firebase";
 import loginImage from "/src/assets/icons/signOutt.png";
 import signoutLogo from "/src/assets/icons/signOut.png";
-import googleLogo from "/src/assets/icons/google_536453.png";
-import sunflowerImage from "/src/assets/images/sunflower.jpg";
-import butterflyImage from "/src/assets/images/butterfly.jpg";
+import googleLogo from "/src/assets/icons/google.webp";
+import sunflowerImage from "/src/assets/images/sunflower.webp";
+import butterflyImage from "/src/assets/images/butterfly.webp";
 //import { fetchNFTsDB } from "../../redux/actions/myNFTdataAction";
 
 export default function MyNFTs() {

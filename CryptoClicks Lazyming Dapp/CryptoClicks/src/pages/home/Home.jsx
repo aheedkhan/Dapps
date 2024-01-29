@@ -1,54 +1,67 @@
 import { ROUTE } from "/src/utils/constants";
 import { useNavigate } from "react-router-dom";
+import NatureImage from "/src/assets/images/Nature.webp";
+import ArchitectureImage from "/src/assets/images/Architecture.webp";
+import automobileImage from "/src/assets/images/automobile.webp";
+import creativityImage from "/src/assets/images/creativity.webp";
+import cultureImage from "/src/assets/images/culture.webp";
+import fashionImage from "/src/assets/images/fashion.webp";
+import lifestyleImage from "/src/assets/images/lifestyle.webp";
+import longexpoImage from "/src/assets/images/longexpo.webp";
+import petsImage from "/src/assets/images/pets.webp";
+import sportsImage from "/src/assets/images/sports.webp";
+import travelImage from "/src/assets/images/travel.webp";
+import wildlifeImage from "/src/assets/images/wildlife.webp";
+
 export default () => {
   const navigate = useNavigate();
   const category = [
     {
-      img: "https://preview.colorlib.com/theme/photosen/images/nature_small_6.jpg.webp",
+      img: NatureImage,
       categ: "Nature",
     },
     {
-      img: "https://th.bing.com/th/id/OIP.-_6YlTT91i0ZEN6vR2kByQHaEo?rs=1&pid=ImgDetMain",
+      img: ArchitectureImage,
       categ: "Architecture",
     },
     {
-      img: "https://images.pexels.com/photos/1313814/pexels-photo-1313814.jpeg?auto=compress&cs=tinysrgb&w=600",
+      img: cultureImage,
       categ: "Culture",
     },
     {
-      img: "https://images.pexels.com/photos/450441/pexels-photo-450441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: travelImage,
       categ: "Travel",
     },
     {
-      img: "https://images.pexels.com/photos/598631/pexels-photo-598631.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: sportsImage,
       categ: "Sports",
     },
     {
-      img: "https://images.pexels.com/photos/13341774/pexels-photo-13341774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: wildlifeImage,
       categ: "Wildlife",
     },
     {
-      img: "https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: fashionImage,
       categ: "Fashion",
     },
     {
-      img: "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: automobileImage,
       categ: "Automobiles",
     },
     {
-      img: "https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: lifestyleImage,
       categ: "Life Style",
     },
     {
-      img: "https://images.pexels.com/photos/842654/pexels-photo-842654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: longexpoImage,
       categ: "Long Exposure",
     },
     {
-      img: "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: petsImage,
       categ: "Pets",
     },
     {
-      img: "https://images.pexels.com/photos/1805268/pexels-photo-1805268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      img: creativityImage,
       categ: "Creativity",
     },
   ];

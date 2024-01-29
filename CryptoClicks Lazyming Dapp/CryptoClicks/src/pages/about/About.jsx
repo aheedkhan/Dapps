@@ -1,9 +1,14 @@
 import vercelLogo from "/src/assets/logos/vercel-logotype-light.png";
 import metamaskLogo from "/src/assets/logos/full-metamask-logo.jpg";
 import ethereumLogo from "/src/assets/logos/ethereum-logo-landscape-black.png";
-import nextjsLogo from "/src/assets/logos/nextjs-logotype-dark-background.png";
+import aboutImage from "/src/assets/images/aboutImage.webp";
 import turboLogo from "/src/assets/logos/turbo-logotype-dark-background.png";
-
+// import reactLogo from "src/assets/logos/react.png";
+// import pinataLogo from "/src\\assets\\logos\\pinata.png";
+// import firebaseLogo from "/src\\assets\\logos\\firebase.png";
+// import tailwindLogo from "/src\\assets\\logos\\tailwind.png";
+// import truffleLogo from "/src\\assets\\logos\\truffle.png";
+// import solidityLogo from "/src\\assets\\logos\\solidity.png";
 export default function About() {
   const team = [
     {
@@ -21,13 +26,13 @@ export default function About() {
     <>
       <section className="font-josefin select-none mb-10">
         <h1 className="text-white text-center text-6xl my-16 select-none ">
-          Crypto Clicks
+          CryptoClicks
         </h1>
         <div className="flex">
           <div className="w-1/2 p-4 h-about ">
             <img
-              src="https://images.pexels.com/photos/1996911/pexels-photo-1996911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              className=" w-full h-full object-cover object-center grayscale hover:grayscale-0 hover:scale-105 mx-4 duration-700 rounded-md"
+              src={aboutImage}
+              className=" w-full h-full object-cover object-center grayscale hover:grayscale-0 hover:scale-105 mx-4 duration-1000 rounded-md"
             />
           </div>
           <div className="w-1/2 p-4 content-center">
@@ -101,17 +106,33 @@ export default function About() {
             </a>
           </li>
         </ul>
+        {/* <section className="mt-14 text-center">
+          <h3 className="text-white font-semibold  font-josefin select-none mb-10 text-4xl ">
+            Our Technology
+          </h3>
+          <div className="grid grid-cols-6">
+            <img className="" src="" />
+            <img className="" src="" />
+            <img className="" src="" />
+            <img className="" src="" />
+            <img className="" src="" />
+            <img className="" src="" />
+          </div>
+        </section> */}
       </section>
 
-      <section className="py-14">
+      <section className="py-14 font-josefin select-none">
         <div className="max-w-screen-xl mx-auto px-4 text-center md:px-8">
           <div className="max-w-xl mx-auto">
             <h3 className="text-white text-3xl font-semibold sm:text-4xl">
-              Meet our team
+              Meet Our Team
             </h3>
             <p className="text-white mt-3">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.Lorem Ipsum has been the industry's standard dummy.
+              Our website development team consists of talented professionals
+              with diverse skills and expertise in web design, development, and
+              maintenance. We are passionate about creating functional,
+              engaging, and user-friendly websites that meet your business goals
+              and expectations.
             </p>
           </div>
           <div className="mt-12 ">
