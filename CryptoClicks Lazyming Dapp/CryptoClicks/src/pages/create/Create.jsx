@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-
+import { useSelector } from "react-redux";
 // set the root element of your app
 Modal.setAppElement("#root");
 import "/src/init";
@@ -17,7 +17,7 @@ export default function Create() {
   const [imageHash, setImageHash] = useState(null);
   const [metadataHash, setMetadataHash] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false); // state for modal
-
+  const isLogout = useSelector((state) => state.auth.isLogout);
   function retirveData(newLink) {
     const ipfsLink = `https://salmon-main-antlion-827.mypinata.cloud/ipfs/${newLink}`;
     fetch(ipfsLink)
@@ -299,14 +299,20 @@ export default function Create() {
                   </div>
                 </div>
               </div>
-              <button
-                type="submit"
-                class="hover:scale-105 duration-300  w-40 h-12 mt-8 lg:ml-20 bg-transparent cursor-pointer border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff] group hover:bg-green-700 transition ease-in-out active:scale-95"
-              >
-                <span class="font-medium text-[#fff] group-hover:text-white">
-                  Create
-                </span>
-              </button>
+              {!isLogout ? (
+                <button
+                  type="submit"
+                  class="hover:scale-105 duration-300  w-40 h-12 mt-8 lg:ml-20 bg-transparent cursor-pointer border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff] group hover:bg-green-700 transition ease-in-out active:scale-95"
+                >
+                  <span class="font-medium text-[#fff] group-hover:text-white">
+                    Create
+                  </span>
+                </button>
+              ) : (
+                <div className="m bg-yellow-200 w-40 h-12 rounded-lg mt-7 lg:ml-20 ">
+                  <p className="font-bold text-center mt-3">SignIn First !</p>
+                </div>
+              )}
             </div>
             {/* 
       /////////////////////////button////////////////////// */}

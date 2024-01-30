@@ -7,10 +7,10 @@ export default function Gallery() {
   const isLogout = useSelector((state) => state.auth.isLogout);
   const [data, setData] = useState([]);
   useEffect(() => {
-    if (isLogout == false) {
-      fatchAllData(setData);
-    }
-  }, [isLogout]);
+    // if (isLogout == false) {
+    fatchAllData(setData);
+    //}
+  }, []);
 
   return (
     <>
