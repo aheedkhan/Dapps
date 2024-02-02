@@ -53,23 +53,24 @@ export default function App() {
           Constants.lazyMintABI,
           Constants.lazyMintContract
         );
-        const chainID = await web3.eth.getChainId();
-
-        // Compare the chain ID with the sepolia chain ID
-        // if (chainID !== sepoliaChainID) {
-        //   // Alert the user that they are not on sepoliachain
-        //   setOnSepoliaChain(false);
-        // }
 
         // Set the web3 config
+
+        // Get the chain ID of the current provider
+        const chainID = await web3.eth.getChainId();
+        //Compare the chain ID with the sepolia chain ID
+        if (chainID == sepoliaChainID) {
+          // Alert the user that they are not on sepoliachain
+          setOnSepoliaChain(true);
+        }
+
         setWeb3Config({
           web3,
           account,
           lazyMintContract,
         });
 
-        // Get the chain ID of the current provider
-
+        console.log(web3Config);
         // Listen for network changes
         window.ethereum.on("chainChanged", async (chainId) => {
           // Compare the new chain ID with the sepolia chain ID
@@ -113,12 +114,14 @@ export default function App() {
 
     window.ethereum.on("chainChanged", async (chainId) => {
       // Compare the new chain ID with the sepolia chain ID
-      if (chainId !== sepoliaChainID) {
+      if (chainId == sepoliaChainID) {
         // Alert the user that they are not on sepoliachain
+        setOnSepoliaChain(true);
+      } else {
         setOnSepoliaChain(false);
       }
     });
-  }, [onSepoliaChain]);
+  }, [onSepoliaChain, selectedAddress]);
 
   return (
     <>
@@ -176,7 +179,7 @@ export default function App() {
                   >
                     Connect Wallet
                   </a>
-                ) : onSepoliaChain ? (
+                ) : !onSepoliaChain ? (
                   <a
                     href="javascript:void(0)"
                     className="py-3 px-4 text-white  bg-red-700 active:bg-green-800  rounded-md shadow"
@@ -207,8 +210,16 @@ export default function App() {
       </nav>
       <Routes>
         <Route path={ROUTE.HOME} element={<Home />} />
-        <Route path={ROUTE.CREATE} element={<Create />} />
-        <Route path={ROUTE.GALLERY} element={<Gallery />} />
+        <Route
+          path={ROUTE.CREATE}
+          element={
+            <Create web3Config={web3Config} nullweb3confing={connectWeb3} />
+          }
+        />
+        <Route
+          path={ROUTE.GALLERY}
+          element={<Gallery web3Config={web3Config} />}
+        />
         <Route path={ROUTE.MYNFTS} element={<MyNFTs />} />
         <Route path={ROUTE.ABOUT} element={<About />} />
         {/* <Route path="*" element={<NotFound />} /> */}

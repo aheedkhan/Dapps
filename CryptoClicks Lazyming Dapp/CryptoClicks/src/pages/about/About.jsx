@@ -20,11 +20,19 @@ export default function About() {
       linkedin: "https://www.linkedin.com/in/aheed-tahir/",
       twitter: "https://x.com/AheedKhan6?t=jycJItBgJlzQpD5KaZ31_Q&s=09",
     },
+    // {
+    //   avatar: " https://www.au.edu.pk/Pages/Faculties/Faculty_Images/1376.jpg",
+    //   name: "Yasir Ali",
+    //   title: "Full Stack Developer ",
+    //   desc: " A developer, cyber security student, and technology enthusiast who loves to code, build, and explore.      ",
+    //   linkedin: "https://www.linkedin.com/in/aheed-tahir/",
+    //   twitter: "https://x.com/AheedKhan6?t=jycJItBgJlzQpD5KaZ31_Q&s=09",
+    // },
   ];
 
   return (
     <>
-      <section className="font-josefin select-none mb-10">
+      <section className="font-josefin  mb-10">
         <h1 className="text-white text-center text-6xl my-16 select-none ">
           CryptoClicks
         </h1>

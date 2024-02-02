@@ -7,7 +7,9 @@ import "/src/init";
 import axios from "axios";
 import { addMetaDataToDB } from "../../utils/firebase";
 
-export default function Create() {
+//import Moralis from "moralis";
+
+export default function Create({ web3Config, nullweb3confing }) {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -17,7 +19,9 @@ export default function Create() {
   const [imageHash, setImageHash] = useState(null);
   const [metadataHash, setMetadataHash] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false); // state for modal
+
   const isLogout = useSelector((state) => state.auth.isLogout);
+
   function retirveData(newLink) {
     const ipfsLink = `https://salmon-main-antlion-827.mypinata.cloud/ipfs/${newLink}`;
     fetch(ipfsLink)
@@ -30,24 +34,33 @@ export default function Create() {
         // Return the response as a JSON object
         return response.json();
       })
-      .then((data) => {
+      .then(async (data) => {
         // Store the JSON object in a variable
         const jsonObject = data;
-        const inde = jsonObject.imageURI.lastIndexOf("/");
-        const imagehash = jsonObject.imageURI.substring(inde + 1);
-
+        const inde = jsonObject.image.lastIndexOf("/");
+        const imagehash = jsonObject.image.substring(inde + 1);
+        console.log(`image has from retrive data function ${imagehash}`);
         // Use the JSON object for your project
         // For example, console.log it
-        const index = ipfsLink.lastIndexOf("/");
-        const metahash = ipfsLink.substring(index + 1);
+        //const index = ipfsLink.lastIndexOf("/");
+        const metahashURI = ipfsLink;
+        console.log(metahashURI);
+        const datafromC = await createTOKEN(web3Config, metahashURI);
+        const tokenID = datafromC[0].toString();
 
-        addMetaDataToDB(jsonObject, metahash, imagehash);
+        const from = datafromC[1].toString();
+        // Convert the hash value to a string
+
+        console.log(`this is contarct returned data, ${from} and ${tokenID}`);
+        addMetaDataToDB(jsonObject, metahashURI, imagehash, tokenID, from);
       })
       .catch((error) => {
         // Handle the error
         console.error(error);
+        alert("Error from firebase server");
       });
   }
+
   const sendFileToIPFS = async (e) => {
     if (file) {
       try {
@@ -83,7 +96,7 @@ export default function Create() {
           description: description,
           amount: amount,
           category: category,
-          imageURI: `https://salmon-main-antlion-827.mypinata.cloud/ipfs/${ipfsHash}`,
+          image: `https://salmon-main-antlion-827.mypinata.cloud/ipfs/${ipfsHash}`,
         };
 
         // upload the metadata as a JSON file to IPFS using the Pinata SDK
@@ -108,21 +121,51 @@ export default function Create() {
 
         retirveData(metadataHash);
         console.log(metadataHash);
+        console.log(web3Config);
 
         //Take a look at your Pinata Pinned section, you will see a new file and a new JSON added to your list.
       } catch (error) {
         console.log("Error sending File and Metadata to IPFS: ");
         console.log(error);
+        alert("Error from pinata api server");
       }
     }
   };
+
   const showImage = (e) => {
     setFile(e.target.files[0]);
     if (e.target.files.length != 0) {
       setImageURL(URL.createObjectURL(e.target.files[0]));
     }
   };
+
   // call the upload function and wait for it to finish
+  const createTOKEN = async (web3Config, metahashURI) => {
+    try {
+      const receipt = await web3Config.lazyMintContract.methods
+        .createToken(metahashURI)
+        .send({ from: web3Config.account, gas: 3000000 });
+
+      console.log(metahashURI);
+      console.log(receipt);
+
+      // Decode the receipt and get the tokenId and the account
+
+      const tokenId = receipt.events.Transfer.returnValues.tokenId;
+
+      // Get the from account from the transaction object
+      const fromAccount = receipt.from;
+
+      // Log the values to the console
+      console.log("Token ID:", tokenId);
+      console.log("From account:", fromAccount);
+      // Return the tokenId and the account as an object
+      return [tokenId, fromAccount];
+    } catch (error) {
+      console.error(error);
+      alert("Error from metamask wallet, network busy");
+    }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -146,6 +189,7 @@ export default function Create() {
       .catch((error) => {
         // handle any errors
         console.error(error);
+        alert("data is not submitted due to high internet traffic");
       });
   }
 
@@ -164,7 +208,7 @@ export default function Create() {
   // Assume you have an IPFS gateway link like this
 
   // Use fetch to get the response from the IPFS gateway link
-
+  console.log(web3Config);
   return (
     <section className="">
       <form onSubmit={handleSubmit}>
@@ -268,7 +312,8 @@ export default function Create() {
               <label className="font-medium text-white">Description</label>
               <textarea
                 required
-                maxLength="200"
+                pattern="[A-Za-z0-9 ]+"
+                maxLength="150"
                 value={description} // Set the value to the description state
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Tell everyone about your nft and how cool it is!!!"
@@ -300,14 +345,22 @@ export default function Create() {
                 </div>
               </div>
               {!isLogout ? (
-                <button
-                  type="submit"
-                  class="hover:scale-105 duration-300  w-40 h-12 mt-8 lg:ml-20 bg-transparent cursor-pointer border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff] group hover:bg-green-700 transition ease-in-out active:scale-95"
-                >
-                  <span class="font-medium text-[#fff] group-hover:text-white">
-                    Create
-                  </span>
-                </button>
+                web3Config == null ? (
+                  <div className="m bg-yellow-200 w-40 h-12 rounded-lg mt-7 lg:ml-20 ">
+                    <p className="font-bold text-center mt-3">
+                      Connect Wallet !
+                    </p>
+                  </div>
+                ) : (
+                  <button
+                    type="submit"
+                    class="hover:scale-105 duration-300  w-40 h-12 mt-8 lg:ml-20 bg-transparent cursor-pointer border-2 border-[#fff] shadow-[inset_0px_-2px_0px_1px_#fff] group hover:bg-green-700 transition ease-in-out active:scale-95"
+                  >
+                    <span class="font-medium text-[#fff] group-hover:text-white">
+                      Create
+                    </span>
+                  </button>
+                )
               ) : (
                 <div className="m bg-yellow-200 w-40 h-12 rounded-lg mt-7 lg:ml-20 ">
                   <p className="font-bold text-center mt-3">SignIn First !</p>
@@ -358,6 +411,7 @@ export default function Create() {
     </section>
   );
 }
+
 //import pinataSDK from "@pinata/sdk";
 
 // const pinata = pinataSDK(

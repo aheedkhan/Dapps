@@ -1,5 +1,5 @@
 //contract address
-const lazyMintContract = "0x574c578EE3Ad3fA4e024AD3610b96bb0c7658655";
+const lazyMintContract = "0x7d015712Ba89555D63E00C138c59b994De34Dc9a";
 
 //ABI
 
@@ -235,30 +235,6 @@ const lazyMintABI = [
     inputs: [
       {
         internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "string",
-        name: "tokenURI",
-        type: "string",
-      },
-    ],
-    name: "mintToken",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "from",
         type: "address",
       },
@@ -387,6 +363,11 @@ const lazyMintABI = [
       {
         internalType: "uint256",
         name: "tokenId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "price",
         type: "uint256",
       },
     ],

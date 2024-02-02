@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchDB, toggle } from "/src/utils/firebase";
-
 import Card from "/src/components/Card_MYNFTs";
 import { signinWithGoogle, signOutt } from "/src/utils/firebase";
 import loginImage from "/src/assets/icons/signOutt.png";
 import signoutLogo from "/src/assets/icons/signOut.png";
-import googleLogo from "/src/assets/icons/google.webp";
+import googleLogo from "/src/assets/icons/google_536453.png";
 import sunflowerImage from "/src/assets/images/sunflower.webp";
 import butterflyImage from "/src/assets/images/butterfly.webp";
 //import { fetchNFTsDB } from "../../redux/actions/myNFTdataAction";
@@ -20,7 +19,13 @@ export default function MyNFTs() {
   // const [check, setCheck] = useState(data[0].array[inde].isListed);
   // const myNFTsData = useSelector((state) => state.myNfts);
   // const dispatch = useDispatch();
-
+  function refresh() {
+    // Set a timeout of 2 seconds (2000 milliseconds)
+    setTimeout(function () {
+      // Reload the current web page
+      window.location.reload();
+    }, 2000);
+  }
   // Use a useEffect hook to call the fetchDB function when the component mounts
   useEffect(() => {
     if (isLogout == false) {
@@ -30,6 +35,7 @@ export default function MyNFTs() {
   console.log(data);
   function toggleList(index) {
     toggle(index);
+    refresh();
   }
   return (
     <>
@@ -72,7 +78,7 @@ export default function MyNFTs() {
 
                 <span>
                   <img
-                    className="mx-5 h-12 group-hover:translate-x-3 invisible group-hover:visible transition-transform duration-1000"
+                    className="mx-5 h-12 group-hover:translate-x-3 rounded-full invisible group-hover:visible transition-transform duration-1000"
                     src={googleLogo}
                   />
                 </span>
@@ -88,7 +94,7 @@ export default function MyNFTs() {
           <div className="w-full flex justify-between p-3  ">
             <button
               onClick={() => signOutt()}
-              className="group ml-2 inline-flex border  px-3 py-2 h-8 mt-4 rounded-lg bg-white border-black text-black active:scale-90 hover:scale-105 duration-700"
+              className="group ml-2 inline-flex border select-none  px-3 py-2 h-8 mt-4 rounded-lg bg-white border-black text-black active:scale-90 hover:scale-105 duration-700"
             >
               {" "}
               SignOut
@@ -122,7 +128,7 @@ export default function MyNFTs() {
                   <>
                     <Card
                       index={index}
-                      image={item.imageURI}
+                      image={item.image}
                       price={item.amount}
                       listed={item.isListed}
                       onclick={toggleList}

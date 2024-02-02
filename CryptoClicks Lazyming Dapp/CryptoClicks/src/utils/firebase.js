@@ -79,7 +79,7 @@ function signOutt() {
 }
 //firestore cloud database
 
-async function addMetaDataToDB(objectJson, metahash, imagehash) {
+async function addMetaDataToDB(objectJson, metahash, imagehash, tokenID, from) {
   // Get the current user
   const user = auth.currentUser;
   // Get the document reference
@@ -88,6 +88,8 @@ async function addMetaDataToDB(objectJson, metahash, imagehash) {
   objectJson.imagehash = imagehash;
   objectJson.isListed = false;
 
+  objectJson.tokenId = tokenID;
+  objectJson.fromAccount = from;
   try {
     // Create or overwrite the document with the user's uid and the initial JSON object
     await setDoc(
@@ -108,6 +110,7 @@ async function addMetaDataToDB(objectJson, metahash, imagehash) {
     console.error("Error updating document: ", e);
   }
 }
+
 // Define the fetchFromDB function
 function fetchDB(setData) {
   // Use the optional chaining operator to access the user uid
