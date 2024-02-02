@@ -19,7 +19,6 @@ import {
   where,
   getDoc,
   getDocs,
-  snapshotEqual,
 } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { logIn, logOut } from "/src/redux/authSlice";
