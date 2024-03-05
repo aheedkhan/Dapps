@@ -193,6 +193,30 @@ async function fatchAllData(setData) {
   setData(dataArray);
 }
 
+async function ownerShipChange(account, index) {
+  // Get the user id and the index
+  const userId = auth.currentUser.uid;
+  const i = index;
+
+  // Get the document reference
+  const docRef = doc(db, `NFTs/${userId}`);
+
+  // Get the document data
+  const docData = await getDoc(docRef);
+
+  // Get the array field
+  const array = docData.data().array;
+
+  // Update the element at the index
+  array[i].isListed = !array[i].isListed;
+  array[i].fromAccount = account;
+  // Update the document with the modified array
+  updateDoc(docRef, {
+    array: array,
+  });
+  console.log(array);
+}
+
 export {
   app,
   auth,
@@ -204,4 +228,5 @@ export {
   fetchDB,
   toggle,
   fatchAllData,
+  ownerShipChange,
 };

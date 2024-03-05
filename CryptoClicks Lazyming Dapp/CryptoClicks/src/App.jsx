@@ -5,7 +5,7 @@ import Home from "./pages/home/Home";
 //import Nav from "./components/Nav";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
-
+//import { React } from "react";
 import MyNFTs from "./pages/myNFTs/MyNFTs";
 import About from "./pages/about/About";
 //import NotFound from "./pages/not_found/NotFound";
@@ -78,6 +78,7 @@ export default function App() {
             // Alert the user that they are not on sepoliachain
             setOnSepoliaChain(false);
           }
+          // refresh();
         });
       } else {
         // Alert the user that the web3 provider is not found
@@ -88,6 +89,7 @@ export default function App() {
       console.error(error);
     }
   };
+
   useEffect(() => {
     // Check if the web3 provider is available
     if (window.ethereum) {

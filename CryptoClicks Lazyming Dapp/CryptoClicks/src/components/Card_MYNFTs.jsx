@@ -43,7 +43,6 @@ export default function Card_MYNFTs(props) {
               <span className=""> List</span>
               <span className="mt-1"> NFT </span>
             </button>
-            <button className="text-white self-end mt-275 mr-5 underline-offset-4 absolute duration-300 invisible group-hover:visible m-auto"></button>
           </>
         )}
       </div>

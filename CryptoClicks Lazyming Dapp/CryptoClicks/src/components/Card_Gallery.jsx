@@ -17,7 +17,7 @@ export default function Card_Gallery({
   return (
     <>
       {islisted ? (
-        <div className="flex  group relative m-2">
+        <div className="flex group relative m-2">
           {" "}
           <img
             className="h-92 w-92 group-hover:scale-95 group-hover:brightness-50 duration-700 rounded-md z-0"
@@ -38,7 +38,7 @@ export default function Card_Gallery({
 
             <button
               onClick={() => transferFunction(from, to, tokenId, price)}
-              class="active:bg-gray-700 active:text-white flex ml-260 font-josefin select-none p-2 rounded-md bg-gray-100 duration-700 group-hover:mb-2 group-hover:mt-270 active:scale-90 active:duration-700  absolute mt-275"
+              class="active:bg-gray-700 active:text-white flex ml-260 font-josefin select-none p-2 rounded-md bg-gray-100 duration-700 group-hover:mb-2 group-hover:mt-270 mt-275 md:mt280 active:scale-90 active:duration-700 absolute "
             >
               <span className="select-none">
                 <img className=" mr-1 h-6" src={Cart} />

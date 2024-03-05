@@ -4,6 +4,7 @@ import { fatchAllData } from "/src/utils/firebase";
 import { useSelector } from "react-redux";
 import { toWei } from "web3-utils";
 import Big from "big.js";
+
 export default function Gallery({ web3Config }) {
   const isLogout = useSelector((state) => state.auth.isLogout);
   const [data, setData] = useState([]);
