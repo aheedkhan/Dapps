@@ -13,7 +13,7 @@ export default function About() {
   const team = [
     {
       avatar:
-        "https://media.licdn.com/dms/image/D5603AQGiUeqopYW5XA/profile-displayphoto-shrink_400_400/0/1673787175307?e=1707955200&v=beta&t=Rxxh-tlCR92qZz4vM-y6Yk1tLoBs6-HrlZtpDwP4Z1o",
+        "https://media.licdn.com/dms/image/D5603AQGiUeqopYW5XA/profile-displayphoto-shrink_800_800/0/1673787175307?e=1724889600&v=beta&t=GAPbEYPwB93C6aZTc9l4qhoeSWdgEbbLSw3aouLaFbs",
       name: "Aheed Tahir",
       title: "Full Stack Developer ",
       desc: " A developer, cyber security student, and technology enthusiast who loves to code, build, and explore.      ",
