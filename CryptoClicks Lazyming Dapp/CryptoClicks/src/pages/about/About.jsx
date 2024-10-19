@@ -3,17 +3,18 @@ import metamaskLogo from "/src/assets/logos/full-metamask-logo.jpg";
 import ethereumLogo from "/src/assets/logos/ethereum-logo-landscape-black.png";
 import aboutImage from "/src/assets/images/aboutImage.webp";
 import turboLogo from "/src/assets/logos/turbo-logotype-dark-background.png";
-import Image from "src/assets/images/Screenshot 2024-10-19 215932-min.png";
-// import pinataLogo from "/src\\assets\\logos\\pinata.png";
-// import firebaseLogo from "/src\\assets\\logos\\firebase.png";
-// import tailwindLogo from "/src\\assets\\logos\\tailwind.png";
-// import truffleLogo from "/src\\assets\\logos\\truffle.png";
-// import solidityLogo from "/src\\assets\\logos\\solidity.png";
+import profileImage from "/src/assets/images/Screenshot 2024-10-19 215932-min.png";
+// import pinataLogo from "/src/assets/logos/pinata.png";
+// import firebaseLogo from "/src/assets/logos/firebase.png";
+// import tailwindLogo from "/src/assets/logos/tailwind.png";
+// import truffleLogo from "/src/assets/logos/truffle.png";
+// import solidityLogo from "/src/assets/logos/solidity.png";
+
 export default function About() {
   const team = [
     {
-      avatar:
-        '$Image',
+      avatar: profileImage,
+   
       name: "Aheed Tahir",
       title: "Full Stack Developer ",
       desc: " A developer, cyber security student, and technology enthusiast who loves to code, build, and explore.      ",
