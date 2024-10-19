@@ -3,7 +3,7 @@ import metamaskLogo from "/src/assets/logos/full-metamask-logo.jpg";
 import ethereumLogo from "/src/assets/logos/ethereum-logo-landscape-black.png";
 import aboutImage from "/src/assets/images/aboutImage.webp";
 import turboLogo from "/src/assets/logos/turbo-logotype-dark-background.png";
-// import reactLogo from "src/assets/logos/react.png";
+import Image from "src/assets/images/Screenshot 2024-10-19 215932-min.png";
 // import pinataLogo from "/src\\assets\\logos\\pinata.png";
 // import firebaseLogo from "/src\\assets\\logos\\firebase.png";
 // import tailwindLogo from "/src\\assets\\logos\\tailwind.png";
@@ -13,7 +13,7 @@ export default function About() {
   const team = [
     {
       avatar:
-        "https://media.licdn.com/dms/image/D5603AQGiUeqopYW5XA/profile-displayphoto-shrink_800_800/0/1673787175307?e=1724889600&v=beta&t=GAPbEYPwB93C6aZTc9l4qhoeSWdgEbbLSw3aouLaFbs",
+        '$Image',
       name: "Aheed Tahir",
       title: "Full Stack Developer ",
       desc: " A developer, cyber security student, and technology enthusiast who loves to code, build, and explore.      ",
